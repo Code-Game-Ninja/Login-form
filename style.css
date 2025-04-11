@@ -1,0 +1,310 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode */
+body.dark {
+    background: #121212;
+    color: #eee;
+}
+
+body.dark .nav {
+    background: rgba(30, 30, 30, 0.9);
+}
+
+body.dark .form-box,
+body.dark .glass-card {
+    background: rgba(0, 0, 0, 0.65);
+    color: #eee;
+}
+
+body.dark .nav-links ul li a {
+    color: #eee;
+}
+
+body.dark .mode-toggle label {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+
+/* Parallax background */
+.parallax-bg {
+    background-image: url('assets/0_81gL-QtWtR27aS-a.jpg');
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    will-change: transform;
+    transition: filter 0.3s ease;
+}
+
+body.dark .parallax-bg {
+    filter: brightness(0.4) contrast(1.2);
+}
+
+/* Toggle */
+.mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+    /* ensure it’s on top */
+}
+
+.mode-toggle input {
+    display: none;
+}
+
+.mode-toggle label {
+    cursor: pointer;
+    font-size: 22px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.85);
+    color: #333;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+body.dark .mode-toggle label {
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+}
+
+/* Navbar */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    position: relative;
+}
+
+.nav-links ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #ff5500;
+    transition: width 0.3s;
+}
+
+.nav-links ul li a:hover::after {
+    width: 100%;
+}
+
+.main {
+    margin-top: 80px;
+    width: 100%;
+}
+
+/* Section Layout */
+.section {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 60px 20px;
+    min-height: calc(100vh - 80px);
+    transition: opacity 0.4s ease;
+}
+
+.active-section {
+    display: flex;
+}
+
+.glass-card {
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #fff;
+}
+
+.glass-card h1,
+.glass-card h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.glass-card p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.glass-card input,
+.glass-card textarea,
+.glass-card button,
+.glass-card .btn {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.glass-card textarea {
+    resize: none;
+    height: 100px;
+}
+
+.glass-card .btn,
+.glass-card input[type="submit"],
+.glass-card button {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.glass-card .btn:hover,
+.glass-card input[type="submit"]:hover,
+.glass-card button:hover {
+    transform: scale(1.05);
+}
+
+/* Form container and box */
+.form-container {
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    min-height: 480px;
+    perspective: 1000px;
+}
+
+.form-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    color: #000;
+}
+
+.form-box.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input,
+form button {
+    margin: 10px 0;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+form input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+form input[type="submit"],
+form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+form button {
+    background-color: #28a745;
+}
+
+form input[type="submit"]:hover,
+form button:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+p {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+
+p a {
+    color: #007bff;
+    text-decoration: none;
+    position: relative;
+}
+
+p a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -2px;
+    background-color: crimson;
+    transition: width 0.3s;
+}
+
+p a:hover::after {
+    width: 100%;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stylish Auth Page</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- 🌌 Parallax Background -->
+    <div class="parallax-bg" id="parallax-bg"></div>
+
+    <!-- 🌙 Dark Mode Toggle -->
+    <div class="mode-toggle">
+        <input type="checkbox" id="darkModeToggle" />
+        <label for="darkModeToggle" title="Toggle Dark Mode">🌙</label>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <div class="logo">
+            <img src="assets/form-svgrepo-com.svg" alt="Logo" />
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('about')">About</a></li>
+                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="main">
+
+        <!-- 🏠 Home Section -->
+        <section class="section home active-section" id="home">
+            <div class="glass-card">
+                <h1>Welcome to Our Stylish Auth Page</h1>
+                <p>Experience a seamless authentication process with our modern design.</p>
+                <button class="btn" onclick="showSection('form')">Get Started</button>
+            </div>
+        </section>
+
+        <!-- 🔐 Auth Form Section -->
+        <section class="section form-section" id="form">
+            <div class="form-container">
+                <!-- Login -->
+                <div class="form-box active" id="loginForm">
+                    <h2>Login</h2>
+                    <form>
+                        <input type="text" placeholder="Phone or Email" required />
+                        <input type="password" placeholder="Password" required />
+                        <input type="submit" value="Login" />
+                    </form>
+                    <p>Don't have an account? <a href="#" onclick="switchForm('signupForm')">Sign up</a></p>
+                    <p>Forgot password? <a href="#" onclick="switchForm('resetForm')">Reset</a></p>
+                </div>
+
+                <!-- Signup -->
+                <div class="form-box" id="signupForm">
+                    <h2>Sign Up</h2>
+                    <form>
+                        <input type="text" placeholder="Username" required />
+                        <input type="email" placeholder="Email" required />
+                        <input type="tel" placeholder="Phone" required />
+                        <input type="password" placeholder="Password" required />
+                        <input type="submit" value="Register" />
+                    </form>
+                    <p>Already have an account? <a href="#" onclick="switchForm('loginForm')">Login</a></p>
+                </div>
+
+                <!-- Reset -->
+                <div class="form-box" id="resetForm">
+                    <h2>Reset Password</h2>
+                    <form>
+                        <input type="email" placeholder="Email" required />
+                        <button type="button" id="request-otp">Request OTP</button>
+                        <input type="password" placeholder="New Password" required />
+                        <input type="password" placeholder="Confirm Password" required />
+                        <input type="submit" value="Reset" />
+                    </form>
+                    <p>Remembered password? <a href="#" onclick="switchForm('loginForm')">Login</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📖 About Section -->
+        <section class="section about" id="about">
+            <div class="glass-card">
+                <h2>About Us</h2>
+                <p>We are dedicated to providing the best user experience with our authentication system.</p>
+            </div>
+        </section>
+
+        <!-- 📩 Contact Section -->
+        <section class="section contact" id="contact">
+            <div class="glass-card">
+                <h2>Contact Us</h2>
+                <p>If you have any questions, feel free to reach out!</p>
+                <form>
+                    <input type="text" placeholder="Your Name" required />
+                    <input type="email" placeholder="Your Email" required />
+                    <textarea placeholder="Your Message" required></textarea>
+                    <input type="submit" value="Send Message" />
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
